@@ -5,7 +5,7 @@ import Header from '../components/header';
 
 const theme = {
     colors: {
-        primary: "mediumseagreen",
+        primary: "black",
         secondary: "mediumaquamarine",
         third: "#mediumseagreen",
         fourth: "#ffffff",
