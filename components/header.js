@@ -1,6 +1,8 @@
 import { StyledHeader } from './styles/header.styled';
 import {StyledNavbar} from './styles/Navbar.styled';
 import {StyledButton} from './styles/button.styled';
+import Link from 'next/link';
+
 
 export default function Header() {
     return (
@@ -9,12 +11,12 @@ export default function Header() {
             <StyledNavbar>
                 <ul>
                     <StyledButton>
-                        <a href="/"><span>Home</span></a> 
+                        <Link href="/"><span>Home</span></Link> 
                     </StyledButton>
                     <StyledButton>
-                        <a href="../pages/movies.js"><span>Movies</span></a> 
+                        <Link href="/movie"><span>Movies</span></Link> 
                     </StyledButton><StyledButton>
-                        <a href="#"><span>Portfolio</span></a> 
+                        <Link href="/portfolio"><span>Portfolio</span></Link> 
                     </StyledButton>
                 </ul>
             </StyledNavbar>

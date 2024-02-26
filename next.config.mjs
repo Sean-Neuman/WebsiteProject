@@ -5,3 +5,5 @@ const nextConfig = {
         styledComponents: true
     }
 };
+
+export default nextConfig;
