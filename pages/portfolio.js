@@ -2,6 +2,9 @@ import GlobalStyles from "../components/styles/Global";
 import { ThemeProvider } from "styled-components";
 import {Container} from "../components/styles/container.styled";
 import Header from '../components/header';
+import { useState } from "react";
+import Login from "../components/login";
+
 
 const theme = {
     colors: {
@@ -12,15 +15,18 @@ const theme = {
         },
     };
 
+
 export default function Portfolio() {
-  return (
+
+
+return (
     <ThemeProvider theme= { theme }>
     <>
         <GlobalStyles />
 
         <Header />
         <Container>
-            <h1>Hello, Portfolio!</h1>
+            <Login />
         </Container>
 
     </>

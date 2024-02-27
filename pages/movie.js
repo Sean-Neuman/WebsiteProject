@@ -22,7 +22,6 @@ export default function Movies() {
   useEffect(() => {
     async function fetchMovies() {
       const movies = await getAllMovies();
-      console.log(movies.results[1]);
       setMovies(movies.results);
     }
     fetchMovies();

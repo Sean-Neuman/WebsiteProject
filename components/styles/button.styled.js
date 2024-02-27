@@ -4,13 +4,13 @@ export const StyledButton = styled.button`
 a {
     position: relative;
     display: inline-block;
-    padding: 15px 30px;
+    padding: 10px 15px;
     border: 2px solid #fefefe;
     text-transform: uppercase;
     color: #fefefe;
     text-decoration: none;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 15px;
   }
   
   a::before {

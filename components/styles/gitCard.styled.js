@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 
 export const CardWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: left;
+    height: 300px;
+    width: 200px;
+    flex-direction: column;
     padding: 20px;
     border: 2px solid ${({ theme }) => theme.colors.secondary};
     border-radius: 10px ;
@@ -28,10 +28,11 @@ export const CardImage = styled.img`
 
     `;
 export const CardTitle = styled.h2`
-    margin: 20px 0;
+    margin: 5px 0px 10px 0;
     text-align: center;
     font-size: 1.5em;
-    border : 1px solid ${({ theme }) => theme.colors.secondary};
+    
+
     `;
 export const CardDescription = styled.p`
     text-align: center;
@@ -44,6 +45,8 @@ export const CardRating = styled.p`
     `;
 export const CardNum = styled.p`
     text-align: center;
+    margin: 0px 0;
     font-size: 9em;
+    border-radius: 10px ;
     border: 1px solid ${({ theme }) => theme.colors.secondary};
     `;
