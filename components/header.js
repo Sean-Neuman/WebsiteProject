@@ -1,5 +1,5 @@
 import { StyledHeader } from "./styles/header.styled";
-import { StyledNavbar } from "./styles/Navbar.styled";
+import { StyledNavbar } from "./styles/navbar.styled";
 import { StyledButton } from "./styles/button.styled";
 import Link from "next/link";
 

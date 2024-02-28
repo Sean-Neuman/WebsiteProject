@@ -101,6 +101,15 @@ export default function Portfolio() {
     await signOut(auth);
     toggleNoUser();
   };
+  const [imageUpload, setImageUpload] = useState(null);
+  const uploadImage = () => {
+    // ... upload image logic
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `images/${imageUpload.name}`);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      alert("Uploaded a blob or file!");
+    });
+  };
 
   const [porjList, setProjList] = useState([]);
 
@@ -185,10 +194,10 @@ export default function Portfolio() {
                     </Form>
                   </LoginPage>
                 ) : (
-                    <Container>
-                  <Button onClick={toggleFormTrue}>Login</Button>
-                  <h2> For my privacy, please login to view my projects. </h2>
-                    </ Container>
+                  <Container>
+                    <Button onClick={toggleFormTrue}>Login</Button>
+                    <h2> For my privacy, please login to view my projects. </h2>
+                  </Container>
                 )}
               </>
             ) : (
@@ -197,12 +206,15 @@ export default function Portfolio() {
 
                 <StyledTitle>Projects</StyledTitle>
                 <RowDiv>
-                    {porjList.map((proj) => (
-                        <div>
-                        <ProjCard data={proj}/>
-                        </div>
-                    ))}
+                  {porjList.map((proj) => (
+                    <div>
+                      <ProjCard data={proj} />
+                    </div>
+                  ))}
                 </RowDiv>
+                <h2>Upload an image on your Dogs</h2>
+                <input type="file" />
+                <Button onClick={uploadImage}>Upload Image</Button>
               </Container>
             )}
           </>

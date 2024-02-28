@@ -8,6 +8,7 @@ import Card from "../components/card";
 import { StyledTitle } from "../components/styles/title.styled";
 
 
+
 const theme = {
     colors: {
         primary: "black",
