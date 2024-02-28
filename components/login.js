@@ -1,72 +1,139 @@
-import React, { useState } from 'react';
-import { LoginPage, Form, LoginForm, RegisterForm, Input, Button, Message, Link } from './styles/login.styled';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase-config';
+import React, { useState } from "react";
+import {
+  LoginPage,
+  Form,
+  LoginForm,
+  RegisterForm,
+  Input,
+  Button,
+  Message,
+  Link,
+} from "./styles/login.styled";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../firebase-config";
+import CoolButton from "./coolButton";
 // ... styled components definitions
 
 function Login() {
-
   const [isRegisterFormVisible, setIsRegisterFormVisible] = useState(false);
-  const toggleForm = () => {
+
+  const toggleRegisterForm = () => {
     setIsRegisterFormVisible(!isRegisterFormVisible);
   };
 
-    const [registerEmail, setRegisterEmail] = useState('');
-    const [registerPassword, setRegisterPassword] = useState('');
-    const [loginEmail, setLoginEmail] = useState('');
-    const [loginPassword, setLoginPassword] = useState('');
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
+  const toggleFormTrue = () => {
+    setIsFormVisible(true);
+  };
+  const toggleFormFalse = () => {
+    setIsFormVisible(false);
+  };
 
+  const [isNoUser, setIsNoUser] = useState(true);
 
-const register = async () => {
+  const toggleNoUser = () => {
+    setIsNoUser(!isNoUser);
+  };
+
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const register = async () => {
     // ... register logic
     try {
-    const user = await createUserWithEmailAndPassword(
+      const user = await createUserWithEmailAndPassword(
         auth,
-         registerEmail,
-          registerPassword);
-          
+        registerEmail,
+        registerPassword
+      );
+      console.log(user);
+      toggleFormFalse();
     } catch (error) {
-        console.log(error.message);
-
+      console.log(error.message);
     }
-}
-const login = async () => {
+  };
+  const login = async () => {
     // ... login logic
-}
-const logout = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        loginEmail,
+        loginPassword
+      );
+      console.log(user);
+      toggleNoUser();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  const logout = async () => {
     // ... logout logic
-}
+    await signOut(auth);
+    toggleNoUser();
+  };
 
   return (
-    <LoginPage>
-      <Form>
-        {isRegisterFormVisible ? (
-          <Form>
-            <Input placeholder='Email' onChange={(event) => setRegisterEmail(event.target.value)}/>
-            <Input placeholder='Password' onChange={(event) => setRegisterPassword(event.target.value)}/>
-            <Button onClick={register}>Create</Button>
-            {/* ... */}
-          </Form>
-        ) : (
-          <Form>
-            <Input placeholder='Email' onChange={(event) => setLoginEmail(event.target.value)}/>
-            <Input placeholder='Password' onChange={(event) => setLoginPassword(event.target.value)} />
-            {/* Login form fields */}
-            <Button onClick={''}>Login</Button>
-            {/* ... */}
-          </Form>
-        )}
-        <Message>
-
-          {isRegisterFormVisible ? (
-            <Link onClick={toggleForm}>Sign In</Link>
+    <>
+      {isNoUser ? (
+        <>
+          {isFormVisible ? (
+            <LoginPage>
+              <Form>
+                {isRegisterFormVisible ? (
+                  <Form>
+                    <Input
+                      placeholder="Email"
+                      onChange={(event) => setRegisterEmail(event.target.value)}
+                    />
+                    <Input
+                      placeholder="Password"
+                      onChange={(event) =>
+                        setRegisterPassword(event.target.value)
+                      }
+                    />
+                    <Button onClick={register}>Create</Button>
+                    {/* ... */}
+                  </Form>
+                ) : (
+                  <Form>
+                    <Input
+                      placeholder="Email"
+                      onChange={(event) => setLoginEmail(event.target.value)}
+                    />
+                    <Input
+                      placeholder="Password"
+                      onChange={(event) => setLoginPassword(event.target.value)}
+                    />
+                    {/* Login form fields */}
+                    <Button onClick={login}>Login</Button>
+                    {/* ... */}
+                  </Form>
+                )}
+                <Message>
+                  {isRegisterFormVisible ? (
+                    <Link onClick={toggleRegisterForm}>Sign In</Link>
+                  ) : (
+                    <Link onClick={toggleRegisterForm}>Create an account</Link>
+                  )}
+                </Message>
+              </Form>
+            </LoginPage>
           ) : (
-            <Link onClick={toggleForm}>Create an account</Link>
+            <Button onClick={toggleFormTrue}>Login</Button>
           )}
-        </Message>
-      </Form>
-    </LoginPage>
+        </>
+      ) : (
+          <CoolButton text = {"Logout"} onClick={logout} />
+      )}
+    </>
   );
 }
 

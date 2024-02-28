@@ -5,6 +5,7 @@ import Header from '../components/header';
 import React, { useEffect } from 'react';
 import getAllMovies from "../lib/getallmovies";
 import Card from "../components/card";
+import { StyledTitle } from "../components/styles/title.styled";
 
 
 const theme = {
@@ -33,7 +34,7 @@ export default function Movies() {
         <GlobalStyles />
         <Header />
         <Container>
-            <h1>Movies Ratings List.</h1>
+            <StyledTitle>Movies Ratings List.</StyledTitle>
             <ul>
                 {movies.map((moviedata) => (
                       <Card movie={moviedata} key ={moviedata.id} />

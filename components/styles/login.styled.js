@@ -9,7 +9,7 @@ export const LoginPage = styled.div`
 export const Form = styled.div`
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
+  background: silver;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -34,11 +34,11 @@ export const Button = styled.button`
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: #4caf50;
   width: 100%;
   border: 0;
   padding: 15px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 14px;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -46,7 +46,7 @@ export const Button = styled.button`
   &:hover,
   &:active,
   &:focus {
-    background: #43A047;
+    background: #43a047;
   }
 `;
 
@@ -58,6 +58,6 @@ export const Message = styled.p`
 `;
 
 export const Link = styled.a`
-  color: #4CAF50;
+  color: #4caf50;
   text-decoration: none;
 `;

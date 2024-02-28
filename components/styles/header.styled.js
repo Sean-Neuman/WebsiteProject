@@ -1,12 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-    background-color: ${({ theme }) => theme.colors.primary};
-    padding: 5px 0;
-    border-bottom: 4px solid ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.primary};
+  padding: 5px 0;
+  border-bottom: 4px solid ${({ theme }) => theme.colors.secondary};
 
-    h1 {
-        color: #fff;
-    }
-
+  h1 {
+    color: #fff;
+  }
 `;
